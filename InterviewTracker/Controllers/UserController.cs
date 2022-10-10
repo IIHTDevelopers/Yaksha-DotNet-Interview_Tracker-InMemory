@@ -26,8 +26,8 @@ namespace InterviewTracker.Controllers
         /// <returns></returns>
         public async Task<IActionResult> AllUser()
         {
-            IEnumerable<ApplicationUser> appUser = await _interviewTrackerRepository.GetAllUser();
-            return View(appUser);
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Register New User
@@ -45,22 +45,8 @@ namespace InterviewTracker.Controllers
         [HttpPost]
         public async Task<IActionResult> RegisterUser(RegisterViewModel model)
         {
-            if(ModelState.IsValid)
-            {
-                ApplicationUser newUser = new ApplicationUser
-                {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Email = model.Email,
-                    ReportingTo = model.ReportingTo,
-                    UserTypes = model.UserTypes,
-                    Stat = model.Stat,
-                    MobileNumber = model.MobileNumber
-                };
-                await _interviewTrackerRepository.Register(newUser);
-                return RedirectToAction("AllUser", new { UserId = newUser.UserId });//send action to all user list after data save
-            }
-            return View();
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// edit Registred user 
@@ -70,25 +56,8 @@ namespace InterviewTracker.Controllers
         [HttpGet]
         public IActionResult EditUser(int UserId)
         {
-            ApplicationUser user = _interviewTrackerRepository.GetUserById(UserId);
-            if (user == null)
-            {
-                Response.StatusCode = 404;
-                return View("EmployeeNotFound", UserId);
-            }
-
-            UserEditViewModel newUser = new UserEditViewModel
-            {
-                    UserId = user.UserId,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    ReportingTo = user.ReportingTo,
-                    UserTypes = user.UserTypes,
-                    Stat = user.Stat,
-                    MobileNumber = user.MobileNumber
-                };
-            return View(newUser);
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Edit user after load User on edit mode
@@ -98,20 +67,8 @@ namespace InterviewTracker.Controllers
         [HttpPost]
         public async Task<IActionResult> EditUser(UserEditViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                ApplicationUser appUser = _interviewTrackerRepository.GetUserById(model.UserId);
-                appUser.FirstName = model.FirstName;
-                appUser.LastName = model.LastName;
-                appUser.Email = model.Email;
-                appUser.ReportingTo = model.ReportingTo;
-                appUser.UserTypes = model.UserTypes;
-                appUser.Stat = model.Stat;
-                appUser.MobileNumber = model.MobileNumber;
-                await _interviewTrackerRepository.UpdateUser(appUser);
-                return RedirectToAction("AllUser");
-            }
-            return View();
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Delete User from InMemory Db by passing UserId
@@ -121,8 +78,8 @@ namespace InterviewTracker.Controllers
         [HttpGet]
         public IActionResult DeleteUser(int UserId)
         {
-            var user = _interviewTrackerRepository.GetUserById(UserId);
-            return View(user);
+            //do code here
+            throw new NotImplementedException();
         }
         /// <summary>
         /// Display confirmation message to delete User
@@ -133,8 +90,8 @@ namespace InterviewTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteUserConfirmed(int UserId)
         {
-            await _interviewTrackerRepository.DeleteUserById(UserId);
-            return RedirectToAction("AllUser");
+            //do code here
+            throw new NotImplementedException();
         }
     }
 }
